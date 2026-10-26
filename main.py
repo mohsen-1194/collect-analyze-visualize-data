@@ -32,7 +32,7 @@ def scrape_data(response: requests.Response) -> list:
     return data
 
 
-def analize_data(data: list) -> dict:
+def analyze_data(data: list) -> dict:
     df = pd.DataFrame(data)
     results = {}
 
@@ -144,7 +144,7 @@ def main() -> None:
     response = requests.get(URL)
     if response.ok:
         data = scrape_data(response)
-        cleaned_data = analize_data(data)
+        cleaned_data = analyze_data(data)
         visualize_data(cleaned_data)
     else:
         print("Error with http request/response. Try again.")
