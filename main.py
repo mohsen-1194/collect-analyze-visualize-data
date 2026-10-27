@@ -94,21 +94,21 @@ def analyze_data(data: list) -> dict:
     return results
 
 
-def visualize_data(input_data: dict) -> None:
+def visualize_data(data: dict) -> None:
     # === UNPACKING ===
-    df = input_data["df"]
-    most_popular_brands = input_data["most_popular_brands"]
+    df = data["df"]
+    most_popular_brands = data["most_popular_brands"]
 
     # === PLOTTING ===
     # --- Statistics ---
     fig1 = plt.figure(figsize=(10, 5))
     stats_names = ["median", "average", "cheapest", "most expensive", "75% quantile"]
     stats = [
-        input_data["middle_price"],
-        input_data["average_price"],
-        input_data["lowest_price"],
-        input_data["highest_price"],
-        input_data["expensive_price"],
+        data["middle_price"],
+        data["average_price"],
+        data["lowest_price"],
+        data["highest_price"],
+        data["expensive_price"],
     ]
     bar_chart = plt.bar(stats_names, stats, color="skyblue")
     plt.bar_label(bar_chart)
@@ -118,8 +118,8 @@ def visualize_data(input_data: dict) -> None:
 
     # --- Price Dist ---
     fig2 = plt.figure(figsize=(10, 5))
-    data = df["price"]
-    plt.hist(data, bins=30, color="yellow", edgecolor="red")
+    price = df["price"]
+    plt.hist(price, bins=30, color="yellow", edgecolor="red")
     plt.xticks(np.arange(200, 2000, 100))
     plt.yticks(np.arange(0, 20, 1))
     plt.title("Price Distribution")
