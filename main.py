@@ -147,7 +147,7 @@ def main() -> None:
         cleaned_data = analyze_data(data)
         visualize_data(cleaned_data)
     else:
-        print("Error with http request/response. Try again.")
+        response.raise_for_status()
 
 
 if __name__ == "__main__":
