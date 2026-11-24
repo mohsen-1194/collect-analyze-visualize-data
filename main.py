@@ -141,11 +141,16 @@ def visualize_data(data: dict) -> None:
 
 
 def main() -> None:
+    print("sending request...")
     response = requests.get(URL)
     if response.ok:
+        print("scraping...")
         data = scrape_data(response)
+        print("analyzing data...")
         cleaned_data = analyze_data(data)
+        print("visualizing data...")
         visualize_data(cleaned_data)
+        print("done.")
     else:
         response.raise_for_status()
 
